@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Role</title>
+</head>
+<body>
+    <div style="width: 50%; margin: 0 auto; border: 1px solid black; padding: 20px; box-shadow: 2px 2px 10px rgba(0,0,0,0.1);">
+        <header style="display: flex; justify-content: space-between; align-items: center;">
+            <h1>Add Doocument</h1>
+            <a href=""><button style="background: none; border: none; font-size: 20px; cursor: pointer;">x</button></a>
+        </header>
+        <form method="post">
+            {% csrf_token %}
+            <div>
+                <label for="title">Title *</label>
+                <br>
+                <input type="text" id="title" name="title" maxlength="250" required>
+                <br>
+                <small>Maximum 250 characters allowed</small>
+            </div>
+            <br>
+            <div>
+                <label for="status">Status</label>
+                <br>
+                <input type="radio" id="active" name="status" value=1 required> Active
+                <input type="radio" id="inactive" name="status" value=0 required> Inactive
+            </div>
+            <br>
+            <button type="submit">Add Doocument</button>
+        </form>
+    </div>
+</body>
+</html>
+
+
+

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materials</title>
+</head>
+<body>
+    <div>
+        <header style="display: flex; justify-content: space-between; align-items: center;">
+            <h1>Materials</h1>
+            <button><a href="{% url 'material-create' loged_user %}">+ Add Document</a></button></a>
+        </header>
+        <small>List of Material</small>
+        <div>
+            <table border="1" width="100%">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Document Title</th>
+                        <th>Status</th>
+                        <th>Created on</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for material in all_materials%}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{material.title}}<br><small>Created by : {{material.created_by}}</small></td>
+                        {% if material.status == 1%}
+                            <td>Active</td>
+                        {% else %}
+                            <td>Inactive</td>
+                        {% endif %}
+                        <td>{{material.created_at}}</td>
+                        <td>
+                            <button><a href="{% url 'material-update' loged_user material.title %}">Edit</a></button>
+                            <button><a href="{% url 'material-delete' loged_user material.title %}">Delete</a></button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
